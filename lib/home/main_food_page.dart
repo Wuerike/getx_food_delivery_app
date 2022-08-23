@@ -18,6 +18,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
     return Scaffold(
       body: Column(
         children: [
+          // App Bar
           Container(
             child: Container(
               margin: EdgeInsets.only(top: 15, bottom: 15),
@@ -60,6 +61,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
+          // Carousel
           FoodPageBody(),
         ],
       ),
