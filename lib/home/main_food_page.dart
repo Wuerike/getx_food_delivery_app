@@ -67,7 +67,11 @@ class _MainFoodPageState extends State<MainFoodPage> {
             ),
           ),
           // Carousel
-          FoodPageBody(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: FoodPageBody(),
+            ),
+          )
         ],
       ),
     );
