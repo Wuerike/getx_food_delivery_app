@@ -6,10 +6,6 @@ class Dimensions {
   static double screenHeight = Get.context!.height;
   static double screenWidth = Get.context!.width;
 
-  static double homePageViewContainer = screenHeight / 2.64;
-  static double homePageViewSliderContainer = screenHeight / 3.84;
-  static double homePageViewSliderTextContainer = screenHeight / 7;
-
   // Dynamic height proporcional to screen height
   static double height10 = screenHeight / 84.4;
   static double height15 = screenHeight / 56.27;
@@ -17,6 +13,10 @@ class Dimensions {
   static double height24 = screenHeight / 35.17;
   static double height30 = screenHeight / 28.14;
   static double height45 = screenHeight / 18.76;
+  static double height100 = screenHeight / 8.44;
+  static double height120 = screenHeight / 7.04;
+  static double height220 = screenHeight / 3.84;
+  static double height320 = screenHeight / 2.64;
 
   // Dynamic width proporcional to screen width
   static double width5 = screenWidth / 78;
@@ -24,6 +24,8 @@ class Dimensions {
   static double width15 = screenWidth / 26;
   static double width20 = screenWidth / 19.5;
   static double width30 = screenWidth / 13;
+  static double width100 = screenWidth / 3.9;
+  static double width120 = screenWidth / 3.25;
 
   // Dynamic radius proporcional to screen height
   static double radius15 = screenHeight / 56.27;
