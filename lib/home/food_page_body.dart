@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/big_text.dart';
+import 'package:food_delivery/widgets/popular_item_card_widget.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
 import '../widgets/icon_and_text_widget.dart';
@@ -16,7 +17,7 @@ class FoodPageBody extends StatefulWidget {
 
 class _FoodPageBodyState extends State<FoodPageBody> {
   PageController _pageController = PageController(viewportFraction: 0.85);
-  var _pageViewHeight = Dimensions.homePageViewSliderContainer;
+  var _pageViewHeight = Dimensions.height220;
   var _currentPageValue = 0.0;
   var _scaleFactor = 0.8;
 
@@ -39,8 +40,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Carousel
         Container(
-          height: Dimensions.homePageViewContainer,
+          height: Dimensions.height320,
           child: PageView.builder(
             controller: _pageController,
             itemCount: 5,
@@ -49,6 +51,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             }),
           ),
         ),
+        // Carousel dots indicator
         DotsIndicator(
           dotsCount: 5,
           position: _currentPageValue,
@@ -60,7 +63,32 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               borderRadius: BorderRadius.circular(5.0),
             ),
           ),
-        )
+        ),
+        // Popular items text
+        SizedBox(height: Dimensions.height30),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "Popular"),
+              SizedBox(width: Dimensions.width10),
+              BigText(text: ".", color: AppColors.textColor),
+              SizedBox(width: Dimensions.width10),
+              SmallText(text: "Food pairing"),
+            ],
+          ),
+        ),
+        // Popular items list
+        SizedBox(height: Dimensions.height30),
+        ListView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return PopularItemCardWidget();
+          },
+        ),
       ],
     );
   }
@@ -111,7 +139,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         children: [
           // Image container
           Container(
-            height: Dimensions.homePageViewSliderContainer,
+            height: Dimensions.height220,
             margin: EdgeInsets.only(
                 left: Dimensions.width10, right: Dimensions.width10),
             decoration: BoxDecoration(
@@ -126,7 +154,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: Dimensions.homePageViewSliderTextContainer,
+              height: Dimensions.height120,
               margin: EdgeInsets.only(
                   left: Dimensions.width30,
                   right: Dimensions.width30,
