@@ -7,12 +7,14 @@ class Dimensions {
   static double screenWidth = Get.context!.width;
 
   // Dynamic height proporcional to screen height
+  static double height014 = screenHeight / 602.86;
   static double height10 = screenHeight / 84.4;
   static double height15 = screenHeight / 56.27;
   static double height20 = screenHeight / 42.2;
   static double height24 = screenHeight / 35.17;
   static double height30 = screenHeight / 28.14;
   static double height45 = screenHeight / 18.76;
+  static double height60 = screenHeight / 14.07;
   static double height100 = screenHeight / 8.44;
   static double height120 = screenHeight / 7.04;
   static double height220 = screenHeight / 3.84;
@@ -31,8 +33,11 @@ class Dimensions {
   static double radius15 = screenHeight / 56.27;
   static double radius20 = screenHeight / 42.2;
   static double radius30 = screenHeight / 28.14;
+  static double radius40 = screenHeight / 21.1;
 
   // Dynamic fonts proporcional to screen height
   static double font12 = screenHeight / 70.34;
+  static double font16 = screenHeight / 52.75;
   static double font20 = screenHeight / 42.2;
+  static double font26 = screenHeight / 32.46;
 }

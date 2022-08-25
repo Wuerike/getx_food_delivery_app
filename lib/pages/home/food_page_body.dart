@@ -6,7 +6,8 @@ import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/popular_item_card_widget.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
-import '../widgets/icon_and_text_widget.dart';
+import '../../widgets/food_info_card.dart';
+import '../../widgets/icon_and_text_widget.dart';
 
 class FoodPageBody extends StatefulWidget {
   FoodPageBody({Key? key}) : super(key: key);
@@ -175,55 +176,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     top: Dimensions.height15,
                     left: Dimensions.width15,
                     right: Dimensions.width15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Name
-                    BigText(text: "Chinese Side"),
-                    SizedBox(height: Dimensions.height10),
-                    // Rating info
-                    Row(
-                      children: [
-                        Wrap(
-                          children: List.generate(
-                            5,
-                            (index) => Icon(
-                              Icons.star,
-                              color: AppColors.mainColor,
-                              size: Dimensions.height15,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: Dimensions.width10),
-                        SmallText(text: "4.5"),
-                        SizedBox(width: Dimensions.width10),
-                        SmallText(text: "1234 comments"),
-                      ],
-                    ),
-                    SizedBox(height: Dimensions.height20),
-                    // Status info
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        IconAndTextWidget(
-                          text: "Normal",
-                          icon: Icons.circle_sharp,
-                          iconColor: AppColors.iconColor1,
-                        ),
-                        IconAndTextWidget(
-                          text: "1.7km",
-                          icon: Icons.location_on,
-                          iconColor: AppColors.mainColor,
-                        ),
-                        IconAndTextWidget(
-                          text: "32min",
-                          icon: Icons.access_time_rounded,
-                          iconColor: AppColors.iconColor2,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                child: FoodInfoCard(text: "Chinese Side"),
               ),
             ),
           ),
