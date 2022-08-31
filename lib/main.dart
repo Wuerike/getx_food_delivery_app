@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/pages/home/main_food_page.dart';
+import 'package:food_delivery/pages/home/home_page.dart';
 import 'package:food_delivery/helper/app_scroll_behavior.dart';
 import 'package:get/get.dart';
 import 'helper/dependencies.dart' as dep;
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainFoodPage(),
+      home: HomePage(),
     );
   }
 }

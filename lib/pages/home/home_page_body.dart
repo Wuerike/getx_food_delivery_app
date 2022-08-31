@@ -6,17 +6,17 @@ import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/popular_item_card_widget.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
-import '../../widgets/food_info_card.dart';
+import '../../widgets/product_info_card.dart';
 import '../../widgets/icon_and_text_widget.dart';
 
-class FoodPageBody extends StatefulWidget {
-  FoodPageBody({Key? key}) : super(key: key);
+class HomePageBody extends StatefulWidget {
+  HomePageBody({Key? key}) : super(key: key);
 
   @override
-  State<FoodPageBody> createState() => _FoodPageBodyState();
+  State<HomePageBody> createState() => _HomePageBodyState();
 }
 
-class _FoodPageBodyState extends State<FoodPageBody> {
+class _HomePageBodyState extends State<HomePageBody> {
   PageController _pageController = PageController(viewportFraction: 0.85);
   var _pageViewHeight = Dimensions.height220;
   var _currentPageValue = 0.0;
@@ -176,7 +176,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     top: Dimensions.height15,
                     left: Dimensions.width15,
                     right: Dimensions.width15),
-                child: FoodInfoCard(text: "Chinese Side"),
+                child: ProductInfoCard(text: "Chinese Side"),
               ),
             ),
           ),

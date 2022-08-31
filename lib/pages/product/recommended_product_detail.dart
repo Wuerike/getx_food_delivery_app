@@ -3,14 +3,12 @@ import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 
-import '../../utils/colors.dart';
-import '../../widgets/expandable_text_widget.dart';
-import '../../widgets/food_info_card.dart';
-import '../../widgets/icon_and_text_widget.dart';
-import '../../widgets/small_text.dart';
+import 'package:food_delivery/utils/colors.dart';
+import 'package:food_delivery/widgets/expandable_text_widget.dart';
+import 'package:food_delivery/widgets/product_info_card.dart';
 
-class SliderFoodDetail extends StatelessWidget {
-  const SliderFoodDetail({Key? key}) : super(key: key);
+class RecommendedProductDetail extends StatelessWidget {
+  const RecommendedProductDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,7 @@ class SliderFoodDetail extends StatelessWidget {
               ),
             ),
           ),
-          // Food info card
+          // Product info card
           Positioned(
             left: Dimensions.width20,
             right: Dimensions.width20,
@@ -46,7 +44,7 @@ class SliderFoodDetail extends StatelessWidget {
               ],
             ),
           ),
-          // Food description text
+          // Product description text
           Positioned(
             left: 0,
             right: 0,
@@ -69,7 +67,7 @@ class SliderFoodDetail extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  FoodInfoCard(
+                  ProductInfoCard(
                     text: "Chinese Side",
                     textSize: Dimensions.font26,
                   ),
