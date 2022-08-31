@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery/pages/home/food_page_body.dart';
+import 'package:food_delivery/pages/home/home_page_body.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
 import '../../widgets/big_text.dart';
 
-class MainFoodPage extends StatefulWidget {
-  MainFoodPage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  HomePage({Key? key}) : super(key: key);
 
   @override
-  State<MainFoodPage> createState() => _MainFoodPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MainFoodPageState extends State<MainFoodPage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +69,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
           // Carousel
           Expanded(
             child: SingleChildScrollView(
-              child: FoodPageBody(),
+              child: HomePageBody(),
             ),
           )
         ],

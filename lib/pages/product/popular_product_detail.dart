@@ -6,8 +6,8 @@ import 'package:food_delivery/widgets/expandable_text_widget.dart';
 
 import '../../widgets/app_icon.dart';
 
-class PopularFoodDetail extends StatelessWidget {
-  const PopularFoodDetail({Key? key}) : super(key: key);
+class PopularProductDetail extends StatelessWidget {
+  const PopularProductDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

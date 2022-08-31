@@ -8,11 +8,11 @@ import '../utils/dimensions.dart';
 import 'big_text.dart';
 import 'icon_and_text_widget.dart';
 
-class FoodInfoCard extends StatelessWidget {
+class ProductInfoCard extends StatelessWidget {
   final String text;
   final double textSize;
 
-  const FoodInfoCard({
+  const ProductInfoCard({
     Key? key,
     required this.text,
     this.textSize = 0,
