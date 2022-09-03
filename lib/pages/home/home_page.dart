@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          // Carousel
+          // Body
           Expanded(
             child: SingleChildScrollView(
               child: HomePageBody(),

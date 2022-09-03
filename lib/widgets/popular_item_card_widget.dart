@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/models/product.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
@@ -7,7 +9,10 @@ import '../utils/dimensions.dart';
 import 'icon_and_text_widget.dart';
 
 class PopularItemCardWidget extends StatelessWidget {
-  const PopularItemCardWidget({Key? key}) : super(key: key);
+  final Product popularProduct;
+
+  const PopularItemCardWidget({Key? key, required this.popularProduct})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,8 @@ class PopularItemCardWidget extends StatelessWidget {
               ),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage("assets/image/food0.png"),
+                image:
+                    NetworkImage(AppConstants.getImageUrl(popularProduct.img!)),
               ),
             ),
           ),
@@ -53,7 +59,7 @@ class PopularItemCardWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    BigText(text: "Nutritious fruit meal in China"),
+                    BigText(text: popularProduct.name!),
                     SizedBox(height: Dimensions.height15),
                     SmallText(text: "With chinese characteristics"),
                     SizedBox(height: Dimensions.height15),
