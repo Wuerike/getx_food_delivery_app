@@ -1,6 +1,6 @@
 import 'package:food_delivery/models/product.dart';
 
-class PopularProductResponseDto {
+class ProductResponseDto {
   // Private fields
   int? _totalSize;
   int? _typeId;
@@ -11,7 +11,7 @@ class PopularProductResponseDto {
   List<Product>? get data => _data;
 
   // Constructor
-  PopularProductResponseDto(
+  ProductResponseDto(
       {required totalSize, required typeId, required offset, required data}) {
     _totalSize = totalSize;
     _typeId = typeId;
@@ -20,7 +20,7 @@ class PopularProductResponseDto {
   }
 
   // From json constructor
-  PopularProductResponseDto.fromJson(Map<String, dynamic> json) {
+  ProductResponseDto.fromJson(Map<String, dynamic> json) {
     _totalSize = json['total_size'];
     _typeId = json['type_id'];
     _offset = json['offset'];
