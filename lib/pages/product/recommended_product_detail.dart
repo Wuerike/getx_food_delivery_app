@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controllers/recommended_product_controller.dart';
+import 'package:food_delivery/models/product.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/app_icon.dart';
 import 'package:food_delivery/widgets/big_text.dart';
@@ -6,12 +9,19 @@ import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/widgets/expandable_text_widget.dart';
 import 'package:food_delivery/widgets/product_info_card.dart';
+import 'package:get/get.dart';
 
 class RecommendedProductDetail extends StatelessWidget {
-  const RecommendedProductDetail({Key? key}) : super(key: key);
+  final int pageId;
+
+  const RecommendedProductDetail({Key? key, required this.pageId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Product product =
+        Get.find<RecommendedProductController>().recommendedProductList[pageId];
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -23,15 +33,17 @@ class RecommendedProductDetail extends StatelessWidget {
             child: Container(
               width: double.maxFinite,
               height: Dimensions.height320,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage("assets/image/food0.png"),
+                  image: NetworkImage(
+                    AppConstants.getImageUrl(product.img!),
+                  ),
                 ),
               ),
             ),
           ),
-          // Product info card
+          // Top icons
           Positioned(
             left: Dimensions.width20,
             right: Dimensions.width20,
@@ -39,7 +51,10 @@ class RecommendedProductDetail extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.keyboard_arrow_left),
+                GestureDetector(
+                  onTap: () => Get.back(),
+                  child: AppIcon(icon: Icons.keyboard_arrow_left),
+                ),
                 AppIcon(icon: Icons.shopping_cart_outlined),
               ],
             ),
@@ -68,7 +83,7 @@ class RecommendedProductDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ProductInfoCard(
-                    text: "Chinese Side",
+                    text: product.name!,
                     textSize: Dimensions.font26,
                   ),
                   SizedBox(height: Dimensions.height20),
@@ -76,10 +91,7 @@ class RecommendedProductDetail extends StatelessWidget {
                   SizedBox(height: Dimensions.height20),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: ExpandableTextWidget(
-                        text:
-                            "Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly",
-                      ),
+                      child: ExpandableTextWidget(text: product.description!),
                     ),
                   ),
                 ],
@@ -152,7 +164,7 @@ class RecommendedProductDetail extends StatelessWidget {
                 color: AppColors.mainColor,
               ),
               child: BigText(
-                text: "\$10.0 | Add to cart",
+                text: "\$${product.price} | Add to cart",
                 color: Colors.white,
               ),
             )
