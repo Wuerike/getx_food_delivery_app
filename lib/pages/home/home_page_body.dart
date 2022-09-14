@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/popular_product_controller.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/models/product.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
@@ -106,9 +107,14 @@ class _HomePageBodyState extends State<HomePageBody> {
               shrinkWrap: true,
               itemCount: popularProductController.popularProductList.length,
               itemBuilder: (context, index) {
-                return PopularItemCardWidget(
-                  popularProduct:
-                      popularProductController.popularProductList[index],
+                return GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.PopularProduct(index));
+                  },
+                  child: PopularItemCardWidget(
+                    popularProduct:
+                        popularProductController.popularProductList[index],
+                  ),
                 );
               },
             );
@@ -160,53 +166,58 @@ class _HomePageBodyState extends State<HomePageBody> {
     // Carousel
     return Transform(
       transform: matrix,
-      child: Stack(
-        children: [
-          // Image container
-          Container(
-            height: Dimensions.height220,
-            margin: EdgeInsets.only(
-                left: Dimensions.width10, right: Dimensions.width10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radius30),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-                  AppConstants.getImageUrl(recommendedProduct.img!),
+      child: GestureDetector(
+        onTap: () {
+          Get.toNamed(RouteHelper.RecommendedProduct(index));
+        },
+        child: Stack(
+          children: [
+            // Image container
+            Container(
+              height: Dimensions.height220,
+              margin: EdgeInsets.only(
+                  left: Dimensions.width10, right: Dimensions.width10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                    AppConstants.getImageUrl(recommendedProduct.img!),
+                  ),
                 ),
               ),
             ),
-          ),
-          // White card
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: Dimensions.height120,
-              margin: EdgeInsets.only(
-                  left: Dimensions.width30,
-                  right: Dimensions.width30,
-                  bottom: Dimensions.height30),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius20),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.shadowColor,
-                    blurRadius: 5.0,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
-              ),
+            // White card
+            Align(
+              alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.only(
-                    top: Dimensions.height15,
-                    left: Dimensions.width15,
-                    right: Dimensions.width15),
-                child: ProductInfoCard(text: recommendedProduct.name!),
+                height: Dimensions.height120,
+                margin: EdgeInsets.only(
+                    left: Dimensions.width30,
+                    right: Dimensions.width30,
+                    bottom: Dimensions.height30),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius20),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.shadowColor,
+                      blurRadius: 5.0,
+                      offset: const Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Container(
+                  padding: EdgeInsets.only(
+                      top: Dimensions.height15,
+                      left: Dimensions.width15,
+                      right: Dimensions.width15),
+                  child: ProductInfoCard(text: recommendedProduct.name!),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
