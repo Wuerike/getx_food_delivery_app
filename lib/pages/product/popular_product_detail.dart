@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/controllers/popular_product_controller.dart';
+import 'package:food_delivery/models/product.dart';
+import 'package:food_delivery/utils/app_constants.dart';
 import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/expandable_text_widget.dart';
+import 'package:get/get.dart';
 
 import '../../widgets/app_icon.dart';
 
 class PopularProductDetail extends StatelessWidget {
-  const PopularProductDetail({Key? key}) : super(key: key);
+  final int pageId;
+
+  const PopularProductDetail({Key? key, required this.pageId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Product product =
+        Get.find<PopularProductController>().popularProductList[pageId];
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -20,16 +30,23 @@ class PopularProductDetail extends StatelessWidget {
             expandedHeight: Dimensions.height320,
             backgroundColor: AppColors.yellowColor,
             toolbarHeight: Dimensions.height80,
+            automaticallyImplyLeading: false,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.keyboard_arrow_left),
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: AppIcon(icon: Icons.keyboard_arrow_left),
+                ),
                 AppIcon(icon: Icons.shopping_cart_outlined),
               ],
             ),
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/image/food0.png",
+              background: Image.network(
+                AppConstants.getImageUrl(product.img!),
+                width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
             ),
@@ -38,7 +55,7 @@ class PopularProductDetail extends StatelessWidget {
               child: Container(
                 width: double.maxFinite,
                 padding: EdgeInsets.only(
-                  top: Dimensions.height5,
+                  top: Dimensions.height10,
                   bottom: Dimensions.height10,
                 ),
                 alignment: Alignment.center,
@@ -48,9 +65,18 @@ class PopularProductDetail extends StatelessWidget {
                     topLeft: Radius.circular(Dimensions.height20),
                     topRight: Radius.circular(Dimensions.height20),
                   ),
+                  // Fix 1 pixel gap betwween slivers
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.white,
+                      blurRadius: 0.0,
+                      spreadRadius: 0.0,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
                 ),
                 child: BigText(
-                  text: "Chinese Side",
+                  text: product.name!,
                   size: Dimensions.font26,
                 ),
               ),
@@ -59,12 +85,13 @@ class PopularProductDetail extends StatelessWidget {
           SliverToBoxAdapter(
             child: Container(
               margin: EdgeInsets.only(
+                top: Dimensions.width20,
                 left: Dimensions.width20,
                 right: Dimensions.width20,
               ),
               child: ExpandableTextWidget(
-                  text:
-                      "Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly Chicken marinated in a spiced yoghurt in placed in a large pot, then layered with fried onions, frea coriander cilanro, then par boiled lightly  then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly then par boiled lightly "),
+                text: product.description!,
+              ),
             ),
           )
         ],
@@ -88,7 +115,7 @@ class PopularProductDetail extends StatelessWidget {
                   backgroundColor: AppColors.mainColor,
                 ),
                 BigText(
-                  text: '\$15' + ' X ' + ' 0',
+                  text: "\$${product.price} X 0",
                   size: Dimensions.font26,
                 ),
                 AppIcon(
@@ -148,7 +175,7 @@ class PopularProductDetail extends StatelessWidget {
                     color: AppColors.mainColor,
                   ),
                   child: BigText(
-                    text: "\$10.0 | Add to cart",
+                    text: "\$${product.price} | Add to cart",
                     color: Colors.white,
                   ),
                 )
