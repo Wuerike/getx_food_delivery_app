@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery/controllers/recommended_product_controller.dart';
 import 'package:food_delivery/pages/home/home_page.dart';
 import 'package:food_delivery/helper/app_scroll_behavior.dart';
+import 'package:food_delivery/routes/route_helper.dart';
 import 'package:get/get.dart';
 import 'controllers/popular_product_controller.dart';
 import 'helper/dependencies.dart' as dep;
@@ -24,10 +25,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       scrollBehavior: AppScrollBehavior(),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: HomePage(),
+      initialRoute: RouteHelper.Index(),
+      getPages: RouteHelper.routes,
     );
   }
 }
