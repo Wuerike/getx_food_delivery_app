@@ -10,11 +10,13 @@ import 'icon_and_text_widget.dart';
 
 class ProductInfoCard extends StatelessWidget {
   final String text;
+  final String? price;
   final double textSize;
 
   const ProductInfoCard({
     Key? key,
     required this.text,
+    this.price,
     this.textSize = 0,
   }) : super(key: key);
 
@@ -29,6 +31,13 @@ class ProductInfoCard extends StatelessWidget {
           text: text,
           size: textSize,
         ),
+        if (price != null) ...[
+          SizedBox(height: Dimensions.height10),
+          BigText(
+            text: "\$ ${price!}",
+            size: textSize,
+          )
+        ],
         SizedBox(height: Dimensions.height10),
         // Rating info
         Row(
