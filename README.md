@@ -1,3 +1,5 @@
+**First contact with flutter, I've giveup this project after understanding GETX isnt a good choice**
+
 # food_delivery
 
 A new Flutter project.
